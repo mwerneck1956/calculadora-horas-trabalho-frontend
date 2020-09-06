@@ -1,14 +1,17 @@
 import React, { Fragment } from "react";
 
 //Componente Base
-import {TimePicker} from 'react-materialize'
+import {TimePicker,DatePicker} from 'react-materialize'
 
+//css
+import './TimeInput.css'
 export function TimeInput(props) {
   return (
     <Fragment>
       <p style={{ textAlign: "initial" }}>{props.label}</p>
       <TimePicker
-        onChange = {(h,m)=>props.onChange(h,m)}
+        className = "timePicker"
+        //onChange = {(h,m)=>props.onChange(h,m)}
         options={{
           autoClose: false,
           container: null,
