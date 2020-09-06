@@ -5,26 +5,27 @@ import useWindowSize from "../CustomHooks/useWindowSize";
 
 //Compontes do materialize
 
-
 //Components Customizados criados para o projeto
-import { TimeInput } from "../components/TimeInput/TimeInput";
+import { TimeInput, Button , DateInput } from "../components/index";
 
 //Utilizando grid do material-ui para definir o layout
-import { Grid, TextField ,Button} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 //Css
-import '../styles/Buttons.css'
 
 //Ilustração de tempo utilizada na pagina
 import timeIlustration from "../assets/imgs/HorarioIlustration.svg";
 
 export default function WorkTimeCalculator() {
+  
+  //Custom Hooks
   const size = useWindowSize();
+
+  //State hooks
   const [arrivalTime, setArrivalTime] = useState(0);
   const [departureTime, setDepartureTime] = useState(0);
-  useEffect(() => {
-    console.log("arrival time", arrivalTime);
-  }, [arrivalTime]);
+  const [date,setDate] = useState(new Date())
+
   return (
     <Grid
       style={{ marginTop: "3%" }}
@@ -33,29 +34,41 @@ export default function WorkTimeCalculator() {
       lg={12}
       xl={12}
     >
-      <Grid xs={12} lg={3} direction="row" justify={size.width > 1273 ? "space-between" :"center"}item container>
+      <Grid
+        xs={12}
+        lg={3}
+        direction="row"
+        justify={size.width > 1273 ? "space-between" : "center"}
+        item
+        container
+      >
         <Grid sm={12} lg={12}>
           <h6>Calculadora de horas trabalhadas</h6>
         </Grid>
 
-        <Grid xs={8} md={5} sm={5} lg ={5}>
-          <TimeInput label="Data"/>
+        <Grid xs={8} md={5} sm={5} lg={5}>
+          <DateInput label="Data" onChange={(event)=>setDate(event.target.value)} value={date} />
         </Grid>
-        <Grid lg={6} md={5} sm={5} xs={0}/>
-        <Grid  xs={8} md={5} sm={5} lg={5}>
-          <TimeInput label="Horário Entrada"/>
+        <Grid lg={6} md={5} sm={5} xs={0} />
+        <Grid xs={8} md={5} sm={5} lg={5}>
+          <TimeInput
+            onChange={(event) => setArrivalTime(event.target.value)}
+            value={arrivalTime}
+            label="Horário Entrada"
+          />
         </Grid>
         <Grid sm={5} md={5} xs={8} lg={5}>
-          <TimeInput label="Horário Saída"/>
+          <TimeInput
+            onChange={(event) => setDepartureTime(event.target.value)}
+            value={departureTime}
+            label="Horário Saída"
+          />
         </Grid>
-        <Grid  md={5} sm={5} xs={8} lg={12} xl={6}>
-          <button>
-              Calcular
-          </button>
+        <Grid md={5} sm={5} xs={8} lg={12} xl={12}>
+          <Button title="Calcular" />
         </Grid>
-        
       </Grid>
-      <Grid lg={1}/>
+      <Grid lg={1} />
       <Grid md={6} lg={4} xl={4}>
         <img
           src={timeIlustration}
