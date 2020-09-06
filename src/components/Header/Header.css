@@ -1,0 +1,36 @@
+
+.header{
+  font-weight: 400;
+  background-color: transparent!important;
+  box-shadow: inherit!important;
+}
+.header spam{
+  font-weight: 200!important;
+  color  : var(--main-black);
+  font-size: 20px!important;
+}
+.header i {
+  font-size: 2.5rem!important;
+  color :var(--main-orange);
+}
+.header #bemVindo{
+  font-family: 'Roboto', sans-serif!important;
+  color :var(--main-black)!important;
+}
+.button{
+  font-weight: 600;
+  text-transform: none;
+  color : #ffffff!important;
+  box-shadow: inherit!important;
+  background-color: var(--main-orange)!important;
+}
+@media(min-width : 1091px){
+  .button{
+    width: 130px!important;
+  }
+}
+@media(max-width : 1090px){
+  .button{
+    width: 85%!important; 
+  }
+}

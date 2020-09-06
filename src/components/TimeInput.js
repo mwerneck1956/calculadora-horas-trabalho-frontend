@@ -8,7 +8,7 @@ export function TimeInput(props) {
     <Fragment>
       <p style={{ textAlign: "initial" }}>{props.label}</p>
       <TimePicker
-        id="TimePicker-13"
+        onChange = {(h,m)=>props.onChange(h,m)}
         options={{
           autoClose: false,
           container: null,
@@ -16,16 +16,16 @@ export function TimeInput(props) {
           duration: 350,
           fromNow: 0,
           i18n: {
-            cancel: "Cancel",
-            clear: "Clear",
+            cancel: "Cancelar",
+            clear: "Limpar",
             done: "Ok",
           },
           onCloseEnd: null,
           onCloseStart: null,
-          onOpenEnd: null,
+          onOpenEnd:null,
           onOpenStart: null,
-          onSelect: (hour,minute) => props.onSelect(hour,minute),
-          showClearBtn: false,
+          onSelect:null ,
+          showClearBtn: true,
           twelveHour: false,
           vibrate: true,
         }}
