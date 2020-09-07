@@ -11,13 +11,29 @@ import { TimeInput, Button , DateInput } from "../components/index";
 //Utilizando grid do material-ui para definir o layout
 import { Grid } from "@material-ui/core";
 
-//Css
+//api
+import api from '../services/api'
 
 //Ilustração de tempo utilizada na pagina
 import timeIlustration from "../assets/imgs/HorarioIlustration.svg";
 
 export default function WorkTimeCalculator() {
   
+    function calcularHorario (date,arrivalTime,departureTime){
+     let body ={
+       date : date.toString(),
+       arrivalTime : arrivalTime.toString(),
+       departureTime : departureTime.toString()
+
+     }
+      api.post('/calcularHorario' , body )
+      .then(res=> {
+        console.log('requisição feita com sucesso' , res.data)
+      })
+      .catch(err=>{
+        console.log('erro')
+      })
+  }
   //Custom Hooks
   const size = useWindowSize();
 
@@ -46,7 +62,7 @@ export default function WorkTimeCalculator() {
           <h6>Calculadora de horas trabalhadas</h6>
         </Grid>
 
-        <Grid xs={8} md={5} sm={5} lg={5}>
+        <Grid xs={8} md={5} sm={5} lg={6} xl={5}>
           <DateInput label="Data" onChange={(event)=>setDate(event.target.value)} value={date} />
         </Grid>
         <Grid lg={6} md={5} sm={5} xs={0} />
@@ -65,12 +81,14 @@ export default function WorkTimeCalculator() {
           />
         </Grid>
         <Grid md={5} sm={5} xs={8} lg={12} xl={12}>
-          <Button title="Calcular" />
+          <Button onClick = {()=>calcularHorario(date,arrivalTime,departureTime)} title="Calcular" />
         </Grid>
       </Grid>
       <Grid lg={1} />
       <Grid md={6} lg={4} xl={4}>
         <img
+
+          alt = "ilustração de horário"
           src={timeIlustration}
           style={{
             width: "100%",
