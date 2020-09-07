@@ -13,8 +13,8 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 export default function Header(params) {
   return (
-    <Grid justify="center" container>
-      <Grid item lg={8} xs={12} xl={8}>
+    <Grid style={{marginTop :"3%"}} justify="center" container>
+      <Grid item md={8} lg={8} xs={12} xl={8}>
         <Navbar
           className="transparent header"
           alignLinks="right"
