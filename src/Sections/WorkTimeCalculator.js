@@ -11,6 +11,8 @@ import {
   Button,
   DateInput,
   DialogWorkTimeStatistics,
+  ScheduleTable,
+  CustomizedSnackbar,
 } from "../components/index";
 
 //Utilizando grid do material-ui para definir o layout
@@ -23,6 +25,12 @@ import api from "../services/api";
 import timeIlustration from "../assets/imgs/HorarioIlustration.svg";
 
 export default function WorkTimeCalculator() {
+  function setSnackBar() {
+    setTimeout(() => {
+      setOpenSnackbar(false);
+    }, 1000);
+  }
+
   function calcularHorario(date, arrivalTime, departureTime) {
     let body = {
       date: date.toString(),
@@ -32,8 +40,15 @@ export default function WorkTimeCalculator() {
     api
       .post("/calcularHorario", body)
       .then((res) => {
-        setStatisticsVisible(true);
-        setData(res.data);
+        //setStatisticsVisible(true);
+        let dados = tableData;
+        tableData.unshift(res.data);
+        setTableData(dados);
+        //Controle da snackbar
+        setSnackMessage("Calculado com sucesso!")
+        setSeverity("success")
+        setOpenSnackbar(true);
+        setSnackBar()
       })
       .catch((err) => {
         console.log("erro");
@@ -44,8 +59,12 @@ export default function WorkTimeCalculator() {
     return (
       <Grid xl={5} lg={5} item>
         <h5>Estatísticas</h5>
-        <h6>Horas Diurnas : <spam>{data.dayTimeHours}</spam>  </h6>
-        <h6>Horas Noturnas  :<spam>{data.nightTimeHours}</spam>  </h6>
+        <h6>
+          Horas Diurnas : <spam>{data.dayTimeHours}</spam>{" "}
+        </h6>
+        <h6>
+          Horas Noturnas :<spam>{data.nightTimeHours}</spam>{" "}
+        </h6>
       </Grid>
     );
   }
@@ -53,11 +72,24 @@ export default function WorkTimeCalculator() {
   const size = useWindowSize();
 
   //State hooks
+  const [tableData, setTableData] = useState([
+    {
+      date: "25/05/2020",
+      arrivalHour: "15:00",
+      departureHour: "23:00",
+      nightTimeHours: "01:00",
+      dayTimeHours: "07:00",
+    },
+  ]);
+  const [severity, setSeverity] = useState("success");
+  const [snackMessage, setSnackMessage] = useState(
+    "Horario Calculado com sucesso"
+  );
   const [data, setData] = useState({});
-  const [stasticsVisible, setStatisticsVisible] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
   const [arrivalTime, setArrivalTime] = useState(0);
   const [departureTime, setDepartureTime] = useState(0);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState("25-09-2020");
 
   return (
     <Grid
@@ -75,6 +107,11 @@ export default function WorkTimeCalculator() {
         item
         container
       >
+        <CustomizedSnackbar
+          open={openSnackbar}
+          severity={severity}
+          message={snackMessage}
+        />
         <Grid sm={12} sm={10} md={10} lg={12}>
           <h5>Calculadora de horas trabalhadas</h5>
         </Grid>
@@ -119,8 +156,14 @@ export default function WorkTimeCalculator() {
           }}
         ></img>
       </Grid>
-      <Grid xs={12} lg={8} justify={size.width > 1280 ? 'flex-start' : 'center' }  container>
-          {setStatisticsVisible? WorkStatisticsSection() : null}
+      <Grid
+        xs={12}
+        lg={8}
+        justify={size.width > 1280 ? "flex-start" : "center"}
+        container
+      >
+        <h6>Relação horario</h6>
+        <ScheduleTable data={tableData} />
       </Grid>
     </Grid>
   );
