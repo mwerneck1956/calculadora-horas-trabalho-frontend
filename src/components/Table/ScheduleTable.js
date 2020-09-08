@@ -9,7 +9,6 @@ import {
 } from "@material-ui/core";
 
 export function ScheduleTable(props) {
-  console.log('props reecbida' , props)
   let data = props.data;
   return (
     <TableContainer>

@@ -25,7 +25,10 @@ import api from "../services/api";
 import timeIlustration from "../assets/imgs/HorarioIlustration.svg";
 
 export default function WorkTimeCalculator() {
-  function setSnackBar() {
+  function setSnackBar(snackMessage,severity) {
+    setSnackMessage(snackMessage)
+    setSeverity(severity)
+    setOpenSnackbar(true)
     setTimeout(() => {
       setOpenSnackbar(false);
     }, 1000);
@@ -45,13 +48,12 @@ export default function WorkTimeCalculator() {
         tableData.unshift(res.data);
         setTableData(dados);
         //Controle da snackbar
-        setSnackMessage("Calculado com sucesso!")
-        setSeverity("success")
-        setOpenSnackbar(true);
-        setSnackBar()
+        setSnackBar("Calculado com sucesso!","success")
       })
       .catch((err) => {
-        console.log("erro");
+        if(err.response.data && err.response.data.message)
+        setSnackBar(err.response.data.message , "error")
+
       });
   }
 
@@ -74,7 +76,7 @@ export default function WorkTimeCalculator() {
   //State hooks
   const [tableData, setTableData] = useState([
     {
-      date: "25/05/2020",
+      date: "25-05-2020",
       arrivalHour: "15:00",
       departureHour: "23:00",
       nightTimeHours: "01:00",
@@ -87,8 +89,8 @@ export default function WorkTimeCalculator() {
   );
   const [data, setData] = useState({});
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [arrivalTime, setArrivalTime] = useState(0);
-  const [departureTime, setDepartureTime] = useState(0);
+  const [arrivalTime, setArrivalTime] = useState("12:00");
+  const [departureTime, setDepartureTime] = useState("12:00");
   const [date, setDate] = useState("25-09-2020");
 
   return (
