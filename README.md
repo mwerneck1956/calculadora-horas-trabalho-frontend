@@ -3,7 +3,13 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> Um site que recebe entrada o numero de hora de chegada e hora de saída de um funcionário e retorna o total de horas diurnas e noturnasdo mesmo
+> Um site que recebe entrada o numero de hora de chegada e hora de saída de um funcionário e retorna o total de horas diurnas e noturnas trabalhadas do mesmo
+
+##Pré Requisitos
+```sh
+node
+npm || yarn
+```
 
 ## Install
 
