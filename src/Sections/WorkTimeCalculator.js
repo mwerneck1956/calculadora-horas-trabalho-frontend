@@ -159,8 +159,12 @@ export default function WorkTimeCalculator() {
         ></img>
       </Grid>
       <Grid
-        xs={12}
         lg={8}
+        md={8}
+        sm={8}
+        xl={8}
+        xs={12}
+
         justify={size.width > 1280 ? "flex-start" : "center"}
         container
       >
