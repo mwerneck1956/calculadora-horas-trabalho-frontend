@@ -22,7 +22,7 @@ export default function Header(params) {
             <Fragment>
               <a id="bemVindo" className="brand-logo logo  black-text" href="#">
                 <i className="large material-icons">account_circle</i>{" "}
-                <spam className="logo">Bem Vindo Matheus</spam>
+                <spam className="logo">Bem Vindo Usuário!</spam>
               </a>
             </Fragment>
           }

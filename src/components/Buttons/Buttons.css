@@ -8,6 +8,9 @@
   display: inline-block;
   font-size: 16px;
 }
+.customButton:hover{
+  cursor: pointer;
+}
 @media(min-width : 100px) and (max-width : 597px) {
   .customButton{
     width: 97%!important;
