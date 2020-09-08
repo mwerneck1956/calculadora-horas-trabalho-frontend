@@ -14,20 +14,15 @@ npm || yarn
 ## Install
 
 ```sh
-yarn install
+yarn install || npm install
 ```
 
 ## Usage
 
 ```sh
-yarn run start
+yarn start || npm start
 ```
 
-## Run tests
-
-```sh
-yarn run test
-```
 
 ## Author
 
