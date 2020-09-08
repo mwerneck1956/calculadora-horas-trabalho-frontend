@@ -5,7 +5,7 @@
 
 > Um site que recebe entrada o numero de hora de chegada e hora de saída de um funcionário e retorna o total de horas diurnas e noturnas trabalhadas do mesmo
 
-##Pré Requisitos
+## Prerequisite
 ```sh
 node
 npm || yarn
