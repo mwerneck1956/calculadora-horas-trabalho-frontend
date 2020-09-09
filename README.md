@@ -5,6 +5,8 @@
 
 > Um site que recebe entrada o numero de hora de chegada e hora de saída de um funcionário e retorna o total de horas diurnas e noturnas trabalhadas do mesmo
 
+![Telas do Projeto](https://i.imgur.com/ATk2Lza.png)
+
 ## Prerequisite
 ```sh
 node
