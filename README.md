@@ -3,7 +3,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> Uma aplicação web.Que recebe como entrada a hora de chegada e hora de saída de um funcionário, e retorna o total de horas diurnas,e noturnas trabalhadas do mesmo
+> Uma aplicação web , que recebe como entrada a hora de chegada e hora de saída de um funcionário, e retorna o total de horas diurnas,e noturnas trabalhadas do mesmo
 
 ![Telas do Projeto](https://i.imgur.com/ATk2Lza.png)
 
