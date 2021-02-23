@@ -9,8 +9,8 @@
 
 ## Prerequisite
 ```sh
-node
-npm || yarn
+[node](https://nodejs.org/en/)
+[yarn](https://yarnpkg.com/)
 ```
 
 ## Install
