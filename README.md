@@ -9,8 +9,9 @@
 
 ## Prerequisite
 
- [node](https://nodejs.org/en/)
- [yarn](https://yarnpkg.com/)
+ [Node](https://nodejs.org/en/)
+ 
+ [Yarn](https://yarnpkg.com/)
  
 ## Install
 
