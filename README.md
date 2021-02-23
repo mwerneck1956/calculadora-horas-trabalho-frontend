@@ -8,11 +8,10 @@
 ![Telas do Projeto](https://i.imgur.com/ATk2Lza.png)
 
 ## Prerequisite
-```sh
-[node](https://nodejs.org/en/)
-[yarn](https://yarnpkg.com/)
-```
 
+ [node](https://nodejs.org/en/)
+ [yarn](https://yarnpkg.com/)
+ 
 ## Install
 
 ```sh
